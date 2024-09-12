@@ -1,0 +1,100 @@
+1. King Edward Medical University, Lahore
+2. Aga Khan University, Karachi
+3. Allama Iqbal Medical College, Lahore
+4. Liaquat University of Medical & Health Sciences, Jamshoro
+5. Dow University of Health Sciences, Karachi
+6. Khyber Medical University, Peshawar
+7. Fatima Jinnah Medical University, Lahore
+8. Bolan Medical College, Quetta
+9. Rawalpindi Medical University, Rawalpindi
+10. Jinnah Sindh Medical University, Karachi
+11. Punjab Medical College, Faisalabad
+12. Ziauddin University, Karachi
+13. Shifa College of Medicine, Islamabad
+14. Sharif Medical and Dental College, Lahore
+15. Nishtar Medical University, Multan
+16. Sahiwal Medical College, Sahiwal
+17. Shaikh Zayed Medical College, Rahim Yar Khan
+18. Chandka Medical College, Larkana
+19. Mohtarma Benazir Bhutto Shaheed Medical College, Mirpur
+20. Nawaz Sharif Medical College, Gujrat
+21. Services Institute of Medical Sciences, Lahore
+22. Ayub Medical College, Abbottabad
+23. Gomal Medical College, D.I. Khan
+24. Poonch Medical College, Rawalakot
+25. Wah Medical College, Wah Cantt
+26. Akhtar Saeed Medical and Dental College, Lahore
+27. Islamabad Medical and Dental College, Islamabad
+28. Pak Red Crescent Medical and Dental College, Lahore
+29. Sialkot Medical College, Sialkot
+30. Women Medical College, Abbottabad
+31. Frontier Medical College, Abbottabad
+32. Abbottabad International Medical College, Abbottabad
+33. HBS Medical and Dental College, Islamabad
+34. Al-Nafees Medical College, Islamabad
+35. Continental Medical College, Lahore
+36. Fazaia Medical College, Islamabad
+37. Shalamar Medical and Dental College, Lahore
+38. Rehman Medical College, Peshawar
+39. Baqai Medical University, Karachi
+40. Jinnah Medical and Dental College, Karachi
+41. Bahria University Medical and Dental College, Karachi
+42. Bilawal Medical College, Jamshoro
+43. Islamic International Medical College, Rawalpindi
+44. Margalla Institute of Health Sciences, Rawalpindi
+45. CMH Lahore Medical College, Lahore
+46. CMH Multan Institute of Medical Sciences, Multan
+47. CMH Institute of Medical Sciences, Bahawalpur
+48. CMH Kharian Medical College, Kharian
+49. Azra Naheed Medical College, Lahore
+50. Rashid Latif Medical College, Lahore
+51. Lahore Medical and Dental College, Lahore
+52. Gujranwala Medical College, Gujranwala
+53. Khawaja Muhammad Safdar Medical College, Sialkot
+54. Dera Ghazi Khan Medical College, Dera Ghazi Khan
+55. Sahiwal Medical College, Sahiwal
+56. Sargodha Medical College, Sargodha
+57. Quaid-e-Azam Medical College, Bahawalpur
+58. Sheikh Khalifa Bin Zayed Al Nahyan Medical College, Lahore
+59. Aziz Fatimah Medical and Dental College, Faisalabad
+60. Independent Medical College, Faisalabad
+61. University of Lahore Medical College, Lahore
+62. Rahbar Medical and Dental College, Lahore
+63. Ameer-ud-Din Medical College, Lahore
+64. Bakhtawar Amin Medical and Dental College, Multan
+65. Swat Medical College, Swat
+66. Kohat Institute of Medical Sciences, Kohat
+67. Ghulam Muhammad Mahar Medical College, Sukkur
+68. Peshawar Medical College, Peshawar
+69. Gandhara University, Peshawar
+70. Saidu Medical College, Swat
+71. Abbottabad Medical College, Abbottabad
+72. Islamabad Medical and Dental College, Islamabad
+73. Wah Medical College, Wah Cantt
+74. Khyber Girls Medical College, Peshawar
+75. Liaquat College of Medicine and Dentistry, Karachi
+76. Fazaia Ruth Pfau Medical College, Karachi
+77. Indus Medical College, Tando Muhammad Khan
+78. Karachi Medical and Dental College, Karachi
+79. Isra University, Hyderabad
+80. Ziauddin Medical University, Karachi
+81. Al-Tibri Medical College, Karachi
+82. Foundation University Medical College, Islamabad
+83. Akhtar Saeed Medical and Dental College, Lahore
+84. Lahore Medical and Dental College, Lahore
+85. CMH Lahore Medical College, Lahore
+86. University College of Medicine and Dentistry, Lahore
+87. Jinnah Medical and Dental College, Karachi
+88. Islamic International Medical College, Rawalpindi
+89. Shaikh Khalifa Bin Zayed Al-Nahyan Medical College, Lahore
+90. Sargodha Medical College, Sargodha
+91. Ayub Medical College, Abbottabad
+92. Gandhara University, Peshawar
+93. Fazaia Ruth Pfau Medical College, Karachi
+94. Bilawal Medical College, Jamshoro
+95. Shalamar Medical and Dental College, Lahore
+96. Rehman Medical College, Peshawar
+97. Sahiwal Medical College, Sahiwal
+98. Poonch Medical College, Rawalakot
+99. Frontier Medical College, Abbottabad
+100. Abbottabad International Medical College, Abbottabad

@@ -1,0 +1,83 @@
+Engineering Programs:
+1. BSc Electrical Engineering
+2. BSc Mechanical Engineering
+3. BSc Civil Engineering
+4. BSc Chemical Engineering
+5. BSc Software Engineering
+6. BSc Aerospace Engineering
+7. BSc Petroleum Engineering
+8. BSc Environmental Engineering
+9. BSc Industrial Engineering
+10. BSc Biomedical Engineering
+
+Computer Science Programs:
+1. BS Computer Science
+2. BS Software Engineering
+3. BS Information Technology
+4. BS Data Science
+5. BS Artificial Intelligence
+6. BS Cybersecurity
+7. BS Information Systems
+8. BS Game Development
+9. BS Cloud Computing
+10. BS Computational Sciences
+
+Medical Programs:
+1. MBBS
+2. BDS
+3. Doctor of Pharmacy
+4. Doctor of Physical Therapy
+5. BSc Nursing
+6. BSc Medical Laboratory Technology
+7. BSc Radiology
+8. BSc Anesthesia Technology
+9. BSc Cardiology Technology
+10. BSc Optometry
+
+Commerce Programs:
+1. BCom
+2. BS Accounting and Finance
+3. BBA (Hons) Finance
+4. BSc Economics
+5. BBA (Hons) Marketing
+6. BS Supply Chain Management
+7. BS Human Resource Management
+8. BCom (IT)
+9. BS Entrepreneurship
+10. BS Banking and Finance
+
+Law Programs:
+1. LLB
+2. LLM Corporate Law
+3. LLB International Law
+4. LLB Criminal Law
+5. LLB Environmental Law
+6. LLB Family Law
+7. LLM Human Rights Law
+8. LLB Constitutional Law
+9. LLM International Business Law
+10. LLB Intellectual Property Law
+
+Arts Programs:
+1. BA Fine Arts
+2. BA Graphic Design
+3. BA Fashion Design
+4. BA Interior Design
+5. BA Performing Arts
+6. BA Visual Arts
+7. BA Music
+8. BA Film and Television
+9. BA Animation
+10. BA Painting
+
+Humanities Programs:
+1. BA English Literature
+2. BA Philosophy
+3. BA Sociology
+4. BA Psychology
+5. BA Anthropology
+6. BA History
+7. BA Political Science
+8. BA International Relations
+9. BA Journalism and Media Studies
+10. BA Islamic Studies

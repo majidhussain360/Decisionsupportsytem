@@ -1,0 +1,49 @@
+Engineering (MBTI-based):
+1. ISTJ - Mechanical Engineering, Civil Engineering, Industrial Engineering
+2. ESTJ - Electrical Engineering, Industrial Engineering, Operations Management
+3. INTJ - Aerospace Engineering, Chemical Engineering, Systems Engineering
+4. ENTJ - Project Engineering, Electrical Engineering, Structural Engineering
+5. ISTP - Biomedical Engineering, Robotics Engineering, Mechanical Engineering
+6. ENTP - Software Engineering, Mechanical Engineering, Systems Engineering
+7. INTP - Computer Engineering, Aerospace Engineering, Electrical Engineering
+8. ESTP - Civil Engineering, Mechanical Engineering, Project Management
+
+Medical (MBTI-based):
+1. ISFJ - Nursing, Pharmacy, Pediatrics
+2. ESFJ - Public Health, General Medicine, Family Medicine
+3. INFJ - Psychiatry, Clinical Psychology, Medical Research
+4. ENFJ - Psychiatry, Pediatrics, Healthcare Administration
+5. ISFP - Physical Therapy, Occupational Therapy, Radiology
+6. ESFP - Emergency Medicine, General Surgery, Obstetrics and Gynecology
+7. INFP - Counseling, Psychiatry, Mental Health Therapy
+8. ENFP - Psychiatry, Pediatrics, General Practice
+
+Commerce (MBTI-based):
+1. ISTJ - Accounting, Finance, Business Analytics
+2. ESTJ - Business Administration, Operations Management, Marketing
+3. ENTJ - Corporate Management, Finance, Strategic Planning
+4. INTJ - Business Strategy, Economics, Financial Analysis
+5. ISTP - Logistics, Supply Chain Management, Investment Banking
+6. ESTP - Marketing, Sales Management, International Business
+7. ENTP - Entrepreneurship, Marketing, Business Development
+8. ENFP - Public Relations, Marketing, Human Resources
+
+Arts (MBTI-based):
+1. ISFP - Visual Arts, Fine Arts, Photography
+2. ESFP - Performing Arts, Music, Theater
+3. INFJ - Writing, Literature, Creative Arts Therapy
+4. ENFJ - Public Speaking, Teaching Arts, Drama
+5. INFP - Creative Writing, Fine Arts, Animation
+6. ENFP - Graphic Design, Fashion Design, Interior Design
+7. ISTP - Architecture, Sculpture, Photography
+8. ESTP - Film and Television, Music, Acting
+
+Computer Science (MBTI-based):
+1. ISTJ - Data Science, Software Development, Cybersecurity
+2. ESTJ - IT Project Management, Network Engineering, Database Administration
+3. INTJ - Artificial Intelligence, Machine Learning, Data Analysis
+4. ENTJ - Systems Architecture, IT Management, Software Engineering
+5. ISTP - Game Development, Software Engineering, IT Security
+6. INTP - Computer Programming, Data Science, Software Development
+7. ENTP - Web Development, Cloud Computing, Game Design
+8. ENFP - User Experience Design, Front-end Development, Digital Media
