@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import OpenAI
 from langchain_community.document_loaders import TextLoader, CSVLoader
@@ -6,13 +6,9 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.chains import LLMChain, RetrievalQA
 import logging, os, re
-app = Flask(__name__)
 
-# Load the API key from environment variables
+# Set OpenAI API key from environment
 os.environ["OPENAI_API_KEY"] = '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'
-
-if not os.environ["OPENAI_API_KEY"]:
-    raise ValueError("OPENAI_API_KEY environment variable is not set.")
 
 # Initialize the OpenAI API and LangChain components
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -85,9 +81,8 @@ personality_prompt_template = PromptTemplate(
 )
 
 def format_as_list(text):
-    # Split text into lines and wrap each line with <li></li>
-    lines = [f"<li>{line.strip()}</li>" for line in text.strip().split("\n") if line.strip()]
-    return "<ul>" + "".join(lines) + "</ul>"
+    lines = [f"- {line.strip()}" for line in text.strip().split("\n") if line.strip()]
+    return "\n".join(lines)
 
 # Static list of medical programs
 medical_programs = [
@@ -110,16 +105,8 @@ medical_mbti_suggestions = {
 
 def generate_response(form_data):
     try:
-        # Get form inputs
-        inter_percentage = float(form_data.get('inter_percentage', 0))  # Convert to float for comparison
-        household_income = form_data.get('household_income_range', 0)  # Income comparison
-        near_city = form_data.get('near_city', '').lower()  # City input
-
         # Personality analysis
-        personality_chain = LLMChain(
-            llm=openai_llm,
-            prompt=personality_prompt_template
-        )
+        personality_chain = LLMChain(llm=openai_llm, prompt=personality_prompt_template)
         personality_response = personality_chain.run(form_data)
 
         # Extract MBTI personality type
@@ -133,10 +120,8 @@ def generate_response(form_data):
         # Handle suggestions for medical field separately using the dictionary and static medical programs list
         if "medical" in fav_subject:
             if personality_type in medical_mbti_suggestions:
-                # Get MBTI-based medical field suggestions
                 degree_suggestions = f"Based on your MBTI ({personality_type}), suitable medical degrees are: " \
                                      + ", ".join(medical_mbti_suggestions[personality_type]) + ".\n"
-                # Add static medical programs
                 degree_suggestions += "Other general medical programs: " + ", ".join(medical_programs)
             else:
                 degree_suggestions = "No specific medical degree suggestions available for your MBTI type."
@@ -146,157 +131,45 @@ def generate_response(form_data):
             retrieval_qa = RetrievalQA.from_chain_type(llm=openai_llm, retriever=retriever, chain_type="stuff")
             degree_suggestions = retrieval_qa.run(query=degree_suggestions_query)
 
-        # Apply filtering for degree programs based on the subject
-        if "engineering" in fav_subject:
-            filtered_suggestions = "Engineering programs:\n" + degree_suggestions
-        elif "medical" in fav_subject:
-            filtered_suggestions = "Medical programs:\n" + degree_suggestions
-        elif "computer science" in fav_subject:
-            filtered_suggestions = "Computer science programs:\n" + degree_suggestions
-        elif "arts" in fav_subject:
-            filtered_suggestions = "Arts programs:\n" + degree_suggestions
-        elif "business" in fav_subject:
-            filtered_suggestions = "Business programs:\n" + degree_suggestions
-        else:
-            filtered_suggestions = "General programs:\n" + degree_suggestions
+        return degree_suggestions, personality_type
 
-        # Format degree suggestions as a list
-        degree_suggestions_list = format_as_list(filtered_suggestions)
-
-        # Personality explanation remains unchanged
-        personality_explanation = f"""
-        <strong>Personality Explanation:</strong>
-        Based on the provided information, your personality type is most likely <strong>{personality_type}</strong>.
-        """
-        personality_explanation_list = format_as_list(personality_explanation)
-
-        # University suggestions for medical and general subjects
-        if inter_percentage < 60 and household_income == 'below 2 million PKR per year':
-            try:
-                affiliated_colleges_text = open("affiliatedcollgpakistan.txt", "r").readlines()
-                filtered_colleges = [line for line in affiliated_colleges_text if near_city in line.lower()]
-                college_suggestions_list = format_as_list("\n".join(filtered_colleges)) if filtered_colleges else "<strong>No affiliated colleges found in your area.</strong>"
-            except Exception as e:
-                logging.error(f"Error loading affiliated colleges: {e}")
-                college_suggestions_list = "<strong>Affiliated Colleges:</strong> No data available."
-        else:
-            try:
-                if "engineering" in fav_subject:
-                    hec_eng_text = open("heceng_uni.txt", "r").readlines()
-                    filtered_eng_universities = [line for line in hec_eng_text if near_city in line.lower()]
-                    college_suggestions_list = format_as_list("\n".join(filtered_eng_universities)) if filtered_eng_universities else "<strong>No engineering universities found in your area.</strong>"
-                elif "medical" in fav_subject:
-                    hec_med_text = open("hecmedical_uni.txt", "r").readlines()
-                    filtered_med_universities = [line for line in hec_med_text if near_city in line.lower()]
-                    college_suggestions_list = format_as_list("\n".join(filtered_med_universities)) if filtered_med_universities else "<strong>No medical universities found in your area.</strong>"
-                elif "business" in fav_subject:
-                    hec_business_text = open("hecbusiness_uni.txt", "r").readlines()
-                    filtered_business_universities = [line for line in hec_business_text if near_city in line.lower()]
-                    college_suggestions_list = format_as_list("\n".join(filtered_business_universities)) if filtered_business_universities else "<strong>No business universities found in your area.</strong>"
-                else:
-                    hec_general_text = open("hecgen_uni.txt", "r").readlines()
-                    filtered_general_universities = [line for line in hec_general_text if near_city in line.lower()]
-                    college_suggestions_list = format_as_list("\n".join(filtered_general_universities)) if filtered_general_universities else "<strong>No general universities found in your area.</strong>"
-            except Exception as e:
-                logging.error(f"Error loading universities: {e}")
-                college_suggestions_list = "<strong>Universities:</strong> No data available."
-
-        # Pie chart data (unchanged)
-        labels, data = [], []
-        if "I" in personality_type:
-            labels.append("Introversion")
-            data.append(75)
-        else:
-            labels.append("Extraversion")
-            data.append(25)
-
-        if "N" in personality_type:
-            labels.append("Intuition")
-            data.append(65)
-        else:
-            labels.append("Sensing")
-            data.append(35)
-
-        if "T" in personality_type:
-            labels.append("Thinking")
-            data.append(70)
-        else:
-            labels.append("Feeling")
-            data.append(30)
-
-        if "J" in personality_type:
-            labels.append("Judging")
-            data.append(60)
-        else:
-            labels.append("Perceiving")
-            data.append(40)
-
-        pie_chart_data = {"labels": labels, "data": data}
-
-        return personality_explanation_list, degree_suggestions_list, college_suggestions_list, pie_chart_data
-
-    except ValueError as e:
-        logging.error(f"ValueError: {e}")
-        return f"Validation error occurred. Error: {e}", None, None, None
     except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
-        return f"An unexpected error occurred. Please try again later. Error: {e}", None, None, None
+        return f"An unexpected error occurred. Error: {e}", None
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# Streamlit UI
+def main():
+    st.title("Degree Program Suggestion System")
 
-@app.route('/form')
-def form():
-    return render_template('form.html')
+    st.header("Enter your details")
 
-@app.route('/submit', methods=['POST'])
-def submit():
     form_data = {
-        'name': request.form.get('name', ''),
-        'Matric_background': request.form.get('Matric_background', ''),
-        'matric_percentage': request.form.get('matric_percentage', ''),
-        'matric_passing_year': request.form.get('matric_passing_year', ''),
-        'Intermediate_background': request.form.get('Intermediate_background', ''),
-        'inter_percentage': request.form.get('inter_percentage', ''),
-        'inter_year': request.form.get('inter_year', ''),
-        'University_admission_test': request.form.get('University_admission_test', ''),
-        'working_preference': request.form.get('working_preference', ''),
-        'previous_experience': request.form.get('previous_experience', ''),
-        'age': request.form.get('age', ''),
-         'near_city': request.form.get('near_city', ''),
-        'Gender': request.form.get('Gender', ''),
-        'residential': request.form.get('residential', ''),
-        'diff_ethinicity': request.form.get('diff_ethinicity', ''),
-        'Gaurdian_Qualification': request.form.get('Gaurdian_Qualification', ''),
-        'guardian_occupation': request.form.get('guardian_occupation', ''),
-        'residential_background': request.form.get('residential_background', ''),
-        'household_income_range': request.form.get('household_income_range', ''),
-        'family_Support': request.form.get('family_Support', ''),
-        'hobbies': request.form.get('hobbies', ''),
-        'fav_subject': request.form.get('fav_subject', ''),
-        'career_aspirations': request.form.get('career_aspirations', ''),
-        'armed_forces_interest': request.form.get('armed_forces_interest', ''),
-        'related_interest': request.form.get('related_interest', ''),
-        'type_of_skills': request.form.get('type_of_skills', ''),
-        'acquired_skill': request.form.get('acquired_skill', ''),
-        'soft_skills': request.form.get('soft_skills', ''),
-        'personality_description': request.form.get('personality_description', '')
+        'name': st.text_input('Name'),
+        'Matric_background': st.selectbox('Matric Background', ['Science', 'Arts', 'Commerce']),
+        'matric_percentage': st.slider('Matric Percentage', 0, 100),
+        'Intermediate_background': st.selectbox('Intermediate Background', ['Pre-Medical', 'Pre-Engineering', 'Commerce', 'Arts']),
+        'inter_percentage': st.slider('Intermediate Percentage', 0, 100),
+        'University_admission_test': st.text_input('University Admission Test', placeholder="e.g., SAT, ECAT"),
+        'working_preference': st.text_input('Working Preference', placeholder="e.g., office, lab"),
+        'previous_experience': st.text_input('Previous Experience'),
+        'age': st.number_input('Age', min_value=16),
+        'near_city': st.text_input('Nearest City'),
+        'Gender': st.selectbox('Gender', ['Male', 'Female']),
+        'household_income_range': st.selectbox('Household Income Range', ['Below 2 Million PKR', 'Above 2 Million PKR']),
+        'fav_subject': st.text_input('Favorite Subject'),
+        'career_aspirations': st.text_area('Career Aspirations'),
+        'personality_description': st.text_area('Personality Description'),
     }
 
-    # Generate personality explanation and degree suggestions using the OpenAI API
-    personality_explanation, degree_suggestions_output, university_suggestions, pie_chart_data = generate_response(form_data)
+    if st.button("Get Suggestions"):
+        degree_suggestions, personality_type = generate_response(form_data)
+        if personality_type:
+            st.subheader(f"Personality Type: {personality_type}")
+            st.subheader("Degree Suggestions")
+            st.text(degree_suggestions)
+        else:
+            st.error(degree_suggestions)
 
-     # Check if pie_chart_data exists to avoid NoneType error
-    pie_chart_labels = pie_chart_data["labels"] if pie_chart_data else []
-    pie_chart_values = pie_chart_data["data"] if pie_chart_data else []
+if __name__ == "__main__":
+    main()
 
-    return render_template('result.html', form_data=form_data,
-                           personality_explanation=personality_explanation,
-                           degree_suggestions_output=degree_suggestions_output,
-                           university_suggestions=university_suggestions,
-                           pie_chart_labels=pie_chart_labels,
-                           pie_chart_data=pie_chart_values)
-
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+  
